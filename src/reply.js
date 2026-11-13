@@ -181,6 +181,13 @@
         }
       });
     }
+    // X attaches focus handlers to composer containers. Keep pointer and editing
+    // events inside this panel while preserving the textarea's native behavior.
+    for (const type of ['pointerdown', 'pointerup', 'mousedown', 'mouseup', 'click',
+      'dblclick', 'beforeinput', 'input', 'compositionstart', 'compositionupdate',
+      'compositionend', 'paste', 'cut']) {
+      root.addEventListener(type, (event) => event.stopPropagation());
+    }
     anchor.before(host);
     return host;
   }
@@ -193,11 +200,17 @@
     }
     for (const editor of document.querySelectorAll(editorSelector)) {
       if (panels.has(editor) || !isReply(editor)) continue;
-      const label = editor.closest('[data-testid^="tweetTextarea_"][data-testid$="_label"]');
-      // The rich-text wrapper can have a fixed height. Use the composer layout
-      // above it so X's formatting toolbar cannot cover the controls.
-      const anchor = label?.firstElementChild ??
+      // Keep our controls outside X's clickable, horizontal editor label.
+      let anchor = editor.closest('[data-testid^="tweetTextarea_"][data-testid$="_label"]') ??
         editor.closest('[data-testid$="RichTextInputContainer"]') ?? editor;
+      while (anchor.parentElement && anchor.parentElement !== document.body) {
+        const layout = getComputedStyle(anchor.parentElement);
+        if (layout.display === 'flex' && layout.flexDirection.startsWith('row')) {
+          anchor = anchor.parentElement;
+        } else {
+          break;
+        }
+      }
       panels.set(editor, mount(editor, anchor));
     }
   }
