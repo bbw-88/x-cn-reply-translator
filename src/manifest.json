@@ -1,16 +1,11 @@
 {
   "manifest_version": 3,
   "name": "X 中文回复翻译",
-  "version": "1.0.2",
-  "minimum_chrome_version": "116",
-  "description": "在 X 写中文，一键翻成英文并直接填入回复框。",
-  "permissions": ["offscreen"],
-  "background": { "service_worker": "background.js" },
-  "content_security_policy": {
-    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'; connect-src 'self'"
-  },
-  "content_scripts": [{
-    "matches": ["https://x.com/*", "https://twitter.com/*"],
-    "js": ["reply.js"]
-  }]
+  "version": "2.0.0",
+  "minimum_chrome_version": "138",
+  "description": "基于 Native Translate：中文在本机翻成英文，直接填入 X 回复框，可撤销。首次需下载 Chrome 语言包。",
+  "content_scripts": [
+    {"matches":["https://x.com/*","https://twitter.com/*"],"js":["native-bridge.js"],"world":"MAIN","run_at":"document_start"},
+    {"matches":["https://x.com/*","https://twitter.com/*"],"js":["reply.js"],"run_at":"document_idle"}
+  ]
 }

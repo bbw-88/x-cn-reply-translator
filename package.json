@@ -1,10 +1,9 @@
 {
-  "name": "x-cn-reply-translator",
-  "version": "1.0.2",
-  "private": true,
-  "license": "MIT",
-  "engines": { "node": ">=22" },
-  "scripts": { "build": "node scripts/build.mjs" },
-  "dependencies": { "@huggingface/transformers": "3.8.1" },
-  "devDependencies": { "esbuild": "0.28.2" }
+  "name":"x-cn-reply-translator",
+  "version":"2.0.0",
+  "private":true,
+  "license":"MIT",
+  "engines":{"node":">=22"},
+  "scripts":{"build":"node scripts/build.mjs","test":"node --test tests/native-bridge.test.cjs"},
+  "devDependencies":{"esbuild":"0.28.2"}
 }
