@@ -1,0 +1,5 @@
+# Third-party notices
+
+- **OPUS-MT Chinese-to-English**, Helsinki-NLP. The [original model card](https://huggingface.co/Helsinki-NLP/opus-mt-zh-en) identifies the license as [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). The extension bundles the tokenizer and ONNX encoder and merged decoder [converted and quantized by Xenova](https://huggingface.co/Xenova/opus-mt-zh-en/tree/e4256ee55366f450a3776810608c82b60e430a76). The model files are redistributed without further modification. See [the original model card](licenses/OPUS-MT.md) and [license text](licenses/CC-BY-4.0.txt).
+- **Transformers.js 3.8.1**, Hugging Face. The browser JavaScript build is bundled with its ONNX Runtime dependencies using esbuild. See the [upstream project](https://github.com/huggingface/transformers.js) and [Apache 2.0 license text](licenses/Apache-2.0.txt).
+- **ONNX Runtime Web 1.22.0-dev.20250409-89f8206ba4**, Microsoft. Includes the ONNX Runtime JavaScript and WebAssembly runtime. See the [upstream project](https://github.com/microsoft/onnxruntime) and [MIT license text](licenses/ONNX-Runtime-LICENSE.txt).
