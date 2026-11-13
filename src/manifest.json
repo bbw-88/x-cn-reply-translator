@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "X 中文回复翻译",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "minimum_chrome_version": "116",
   "description": "在 X 写中文，一键翻成英文并直接填入回复框。",
   "permissions": ["offscreen"],

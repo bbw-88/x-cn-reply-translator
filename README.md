@@ -4,7 +4,7 @@
 
 ## 安装
 
-1. 从 [GitHub Releases](https://github.com/bbw-88/x-cn-reply-translator/releases/latest) 下载 **x-cn-reply-translator-v1.0.0.zip**（后续版本请选择同名、版本号更新的安装包）。
+1. 从 [GitHub Releases](https://github.com/bbw-88/x-cn-reply-translator/releases/latest) 下载 **x-cn-reply-translator-v1.0.1.zip**（后续版本请选择同名、版本号更新的安装包）。
 2. 解压到一个会保留的文件夹。在桌面 Chrome 地址栏打开 chrome://extensions。
 3. 打开右上角「开发者模式」，点「加载已解压的扩展程序」，选择解压后直接包含 manifest.json 的文件夹。
 4. 刷新 X 页面。
@@ -13,7 +13,7 @@
 
 ## 使用
 
-1. 打开一条帖子的回复框，点「中文回复 → 英文」。
+1. 打开一条帖子的回复框，点回复框上方的「中文回复 → 英文」。
 2. 输入中文，点「翻译并填入」，或按 Ctrl+Enter。
 3. 英文会直接进入 X 的原回复框。检查或修改后，再点击 X 的「回复」。
 

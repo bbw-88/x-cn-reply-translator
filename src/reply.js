@@ -67,6 +67,8 @@
     const host = document.createElement('div');
     host.style.display = 'block';
     host.style.margin = '4px 0';
+    host.style.flex = 'none';
+    host.style.width = '100%';
     const root = host.attachShadow({ mode: 'open' });
     root.innerHTML = [
       '<style>',
@@ -78,6 +80,7 @@
       'button:disabled { cursor:default; opacity:.55; }',
       '.wrap { font:14px/1.4 system-ui,"Microsoft YaHei",sans-serif; }',
       '.open,.close { padding:4px 0; color:#1478b5; background:transparent; border:0; font-weight:650; }',
+      '.open { padding:5px 10px; border:1px solid currentColor; border-radius:16px; }',
       '.panel { padding:10px; border:1px solid #8899a655; border-radius:12px; background:#1d9bf009; }',
       '.panel[hidden],.open[hidden] { display:none; }',
       'textarea { width:100%; min-height:65px; display:block; padding:8px; resize:vertical; color:inherit;',
@@ -178,7 +181,7 @@
         }
       });
     }
-    anchor.after(host);
+    anchor.before(host);
     return host;
   }
 
@@ -190,7 +193,11 @@
     }
     for (const editor of document.querySelectorAll(editorSelector)) {
       if (panels.has(editor) || !isReply(editor)) continue;
-      const anchor = editor.closest('[data-testid$="RichTextInputContainer"]') ?? editor;
+      const label = editor.closest('[data-testid^="tweetTextarea_"][data-testid$="_label"]');
+      // The rich-text wrapper can have a fixed height. Use the composer layout
+      // above it so X's formatting toolbar cannot cover the controls.
+      const anchor = label?.firstElementChild ??
+        editor.closest('[data-testid$="RichTextInputContainer"]') ?? editor;
       panels.set(editor, mount(editor, anchor));
     }
   }
